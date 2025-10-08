@@ -1,68 +1,25 @@
 {
-  "name": "lesson-plan-scribe",
-  "private": true,
-  "version": "0.0.1",
-  "description": "بانک سوالات مدرسه — نسخه دسکتاپ (Electron + Vite + React)",
-  "author": "Neda Basiriyan <your-email@example.com>",
-  "type": "module",
+  "name": "bank-soal",
+  "version": "1.0.0",
+  "main": "main.js",
   "scripts": {
-    "dev": "vite",
-    "preview": "vite preview",
-    "build": "vite build",
-    "start:electron": "electron .",
-    "rebuild-native": "electron-rebuild -f -w better-sqlite3",
-    "postinstall": "npm run rebuild-native || true",
-    "build:electron": "npm run build && electron-builder --win portable --x64"
-  },
-  "dependencies": {
-    "@hookform/resolvers": "^3.10.0",
-    "@supabase/supabase-js": "^2.58.0",
-    "@tanstack/react-query": "^5.83.0",
-    "better-sqlite3": "^8.2.0",
-    "clsx": "^2.1.1",
-    "date-fns": "^3.6.0",
-    "docx": "^8.3.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-hook-form": "^7.61.1",
-    "react-router-dom": "^6.30.1",
-    "recharts": "^2.15.4",
-    "sonner": "^1.7.4",
-    "zod": "^3.25.76"
-  },
-  "devDependencies": {
-    "@types/node": "^18.16.0",
-    "@types/react": "^18.0.37",
-    "@types/react-dom": "^18.0.11",
-    "@vitejs/plugin-react-swc": "^3.11.0",
-    "autoprefixer": "^10.4.21",
-    "electron": "^24.4.0",
-    "electron-builder": "^24.5.0",
-    "electron-is-dev": "^2.0.0",
-    "electron-rebuild": "^3.2.6",
-    "eslint": "^9.32.0",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^3.4.17",
-    "typescript": "^5.2.2",
-    "vite": "^5.4.19"
+    "start": "electron .",
+    "dist": "electron-builder --win nsis --x64",
+    "dist:portable": "electron-builder --win portable --x64"
   },
   "build": {
-    "appId": "com.yourdomain.lessonplanscribe",
-    "productName": "LessonPlanScribe",
-    "files": [
-      "dist/**/*",
-      "electron-main.js",
-      "preload.js",
-      "main-process/**",
-      "package.json"
-    ],
-    "directories": {
-      "buildResources": "build"
-    },
+    "appId": "com.banksoal.app",
+    "productName": "بانک نمونه سوالات",
     "win": {
-      "target": [
-        "portable"
-      ]
+      "target": ["nsis","portable"],
+      "icon": "assets/icon.ico"
     }
+  },
+  "dependencies": {
+    "electron-store": "^8.0.0"
+  },
+  "devDependencies": {
+    "electron": "^25.0.0",
+    "electron-builder": "^24.0.0"
   }
 }
